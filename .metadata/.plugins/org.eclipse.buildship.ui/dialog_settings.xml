@@ -7,7 +7,7 @@
 		</list>
 	</section>
 	<section name="org.eclipse.buildship.ui.wizard.project.creation">
-		<item key="project_location" value="/home/axelor/Training_WS/Hibernate_App_In_Gradle"/>
+		<item key="project_location" value="/home/axelor/Training_WS/JPA_App_In_Gradle"/>
 		<item key="use_default_location" value="true"/>
 	</section>
 </section>

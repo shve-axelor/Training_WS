@@ -1,5 +1,8 @@
 package Hibernate_App_In_Gradle;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -38,18 +41,28 @@ public class ManageEmployee {
 		
 		Transaction t1 = session.beginTransaction();
 		
-		session.save(e2);
-		session.save(e3);
-		session.save(e4);
+	//	session.save(e2);
+	//	session.save(e3);
+	//	session.save(e4);
 		
 	//	t1.commit();
-			
-		employee emp = (employee) session.get(employee.class, 2);
+		
+		List l1 = session.createQuery("FROM employee").list();
+		for(Iterator iterator = l1.iterator(); iterator.hasNext();)
+		{
+			employee q1 = (employee) iterator.next();
+			System.out.println("First Name:" + q1.getFirst_name());
+			System.out.println("Last Name:" + q1.getLast_name());
+		}
+		
+	//	employee emp = (employee) session.get(employee.class, 2);
 	//	emp.setFirst_name("Sachin");
 	//	session.update(emp);
 	//	session.delete(emp);// for deleting specific record
 		t1.commit();
+		
 		System.out.println("Successfully Executed");
+		
 		session.close();
 		sf.close();
 
