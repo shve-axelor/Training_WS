@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.3.Final'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.4'
+    testCompile 'junit:junit:4.12'
+}

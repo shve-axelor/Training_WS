@@ -40,7 +40,7 @@ public class StoreData {
 		Answer ans3 = new Answer();
 		ans3.setAnswername("Servlet is an Interface");
 		ans3.setPostedBy("Jai Kumar");
-		
+
 		Answer ans4 = new Answer();
 		ans4.setAnswername("Servlet is an API");
 		ans4.setPostedBy("Arun");
