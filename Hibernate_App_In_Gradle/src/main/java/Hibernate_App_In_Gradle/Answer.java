@@ -7,8 +7,8 @@ import javax.persistence.*;
 @Table(name="ans5991")
 public class Answer {
 	@Id
-	@SequenceGenerator(name= "abcd",sequenceName="answer", initialValue=100, allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="abcd")
+	@SequenceGenerator(name= "abcde",sequenceName="answer", initialValue=101, allocationSize=10)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="abcde")
 	
 	private int id;
 	private String answername;

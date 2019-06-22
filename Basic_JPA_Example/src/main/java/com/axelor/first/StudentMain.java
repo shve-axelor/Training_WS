@@ -18,13 +18,13 @@ public class StudentMain {
 		p1.setsName("Sachin");
 		p1.setsAge(21);
 		
-	//	em.persist(p1);
+		em.persist(p1);
 		
 		PerStudent p2 = em.find(PerStudent.class, 103);
 		System.out.println(p2.getsName());
 		p2.setsAge(30);
 		
-		em.remove(p2);
+	//	em.remove(p2);
 		
 		em.getTransaction().commit();
 		
