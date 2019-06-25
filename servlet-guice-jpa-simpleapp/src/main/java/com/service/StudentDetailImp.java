@@ -1,4 +1,4 @@
-package com.implementation;
+package com.service;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import com.entity.StudentDetail;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.persist.Transactional;
-import com.service.StudentService;
 
 public class StudentDetailImp implements StudentService {
 

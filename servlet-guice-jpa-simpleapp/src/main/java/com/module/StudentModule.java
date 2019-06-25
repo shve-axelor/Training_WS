@@ -6,7 +6,7 @@ import com.google.inject.persist.PersistFilter;
 import com.google.inject.persist.jpa.JpaPersistModule;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
-import com.implementation.StudentDetailImp;
+import com.service.StudentDetailImp;
 import com.service.StudentService;
 import com.servlet.form.StudentDatabaseServlet;
 
