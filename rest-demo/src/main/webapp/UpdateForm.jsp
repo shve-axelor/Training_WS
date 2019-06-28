@@ -6,34 +6,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Update Student Record</title>
+<title>Update Person Record</title>
 </head>
 <body>
-	<h1 style="text-align: center">Student Record Search Form</h1>
+	<h1 style="text-align: center">Person Record Update Form</h1>
 	<br>
 	<br>
 	<br>
 
 	<%
 	  AddressBook post = (AddressBook) request.getAttribute("searchrecord");
-	  // StudentDetail post = (StudentDetail) posts;
 	%>
-
+	<label>Person Id: <%=post.getPerId() %></label><br><br>
 	<form name="updateForm" method="post" action="update">
 		<span style="display: inline-block; width: 10%;"></span> Person Name: <span
-			style="display: inline-block; width: 8%;"></span> <input type="text" size="50" name="perName"
+			style="display: inline-block; width: 4%;"></span> <input type="text" size="50" name="perName"
 			value="<%=post.getPerName()%>" /><input type="hidden" name="perId" value="<%=post.getPerId()%>" />
-		<br /> <br /> <span style="display: inline-block; width: 10%;"></span> Person Name: <span
-			style="display: inline-block; width: 8%;"></span> <input type="text" size="50" name="perName"
-			value="<%=post.getPerName()%>" /><br /> <br /> <span
-			style="display: inline-block; width: 14%;"></span> City: <span
-			style="display: inline-block; width: 10%;"></span> <select name="perCity">
-			<option value="default">----Select City----</option>
-			<option value="Mumbai">Mumbai</option>
-			<option value="Pune">Pune</option>
-			<option value="Surat">Surat</option>
-			<option value="Rajkot">Rajkot</option>
-		</select> <br /> <br /> <span style="display: inline-block; width: 10%;"></span> <br /> <br /> <br />
+		<br /> <br /> <span style="display: inline-block; width: 10%;"></span> City: <span
+			style="display: inline-block; width: 8%;"></span> <input type="text" size="50" name="perCity"
+			value="<%=post.getPerCity()%>" /><br /> <br /> <span style="display: inline-block; width: 10%;"></span> State: <span
+			style="display: inline-block; width: 8%;"></span> <input type="text" size="50" name="perState"
+			value="<%=post.getPerState()%>" />
+			 <br /> <br /> <br />
 		<br /> <span style="display: inline-block; width: 30%;"></span> <input type="submit"
 			name="action" value="Update" /> <span style="display: inline-block; width: 3%;"></span> <input
 			type="reset" value="Reset" />

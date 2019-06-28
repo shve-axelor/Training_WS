@@ -63,50 +63,23 @@ public class AddressImp implements AddressService {
 
   @Override
   @Transactional
-  public List<Mobile> fetchMobile() {
-    Query query = emp.get().createQuery("Select a from Mobile a");
-
-    List<Mobile> a = query.getResultList();
-
-    return a;
-  }
-
-  @Override
-  @Transactional
-  public List<Address> fetchAddress() {
-    Query query = emp.get().createQuery("Select a from Address a");
-
-    List<Address> a = query.getResultList();
-
-    return a;
-  }
-
-  @Override
-  @Transactional
-  public AddressBook searchData(int name) {
-    AddressBook que = emp.get().find(AddressBook.class, name);
+  public AddressBook searchData(int id) {
+    AddressBook que = emp.get().find(AddressBook.class, id);
 
     return que;
   }
 
   @Override
   @Transactional
-  public String deleteData(String name) {
-    Query qu = emp.get().createQuery("delete from AddressBook where perName = '" + name + "'");
-
-    int execution = qu.executeUpdate();
-
-    if (execution == 1) {
-      return "The Record Is Deleted Successfully.";
-    } else {
-      return "The Record Of The Student Is Not Found.";
-    }
+  public String deleteData(int id) {
+    AddressBook a1 = emp.get().find(AddressBook.class, id);
+    emp.get().remove(a1);
+    return "Record Sucessfully Deleted";
   }
 
   @Override
   @Transactional
-  public String updateData(
-      int id, String state, String name, long contact, String city, String address) {
+  public String updateData(int id, String state, String name, String city) {
 
     AddressBook a1 = emp.get().find(AddressBook.class, id);
     a1.setPerState(state);
@@ -116,5 +89,42 @@ public class AddressImp implements AddressService {
     //  a1.setPerAddress(address);
 
     return "The Data is Sucessfully Updated" + id;
+  }
+
+  @Override
+  @Transactional
+  public String addContact(int id, long contact, String contacttype) {
+    AddressBook a1 = emp.get().find(AddressBook.class, id);
+    Mobile m1 = new Mobile();
+    m1.setContact(contact);
+    m1.setType(contacttype);
+    emp.get().persist(m1);
+    List<Mobile> li1 = a1.getMobile_numbers();
+    li1.add(m1);
+    a1.setMobile_numbers(li1);
+    return "The Contact is Sucessfully Saved";
+  }
+
+  @Override
+  @Transactional
+  public String deleteMobile(int id) {
+    Mobile a1 = emp.get().find(Mobile.class, id);
+    emp.get().remove(a1);
+    return "Mobile Number deleted Sucessfully";
+  }
+
+  @Override
+  public Mobile searchMobile(int mid) {
+    Mobile me = emp.get().find(Mobile.class, mid);
+    return me;
+  }
+
+  @Override
+  @Transactional
+  public String updateContact(int id, long contact, String contacttype) {
+    Mobile m1 = emp.get().find(Mobile.class, id);
+    m1.setContact(contact);
+    m1.setType(contacttype);
+    return "Contact Detail Updated Sucessfully";
   }
 }

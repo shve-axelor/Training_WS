@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<h1 style="text-align: center">Student Registration Form</h1>
+	<h1 style="text-align: center">Person Contact Registration Form</h1>
 	<br>
 	<br>
 	<br>
@@ -15,23 +15,13 @@
 			style="display: inline-block; width: 8%;"></span> <input type="text" size="50" name="perName" />
 		<br /> <br /> <span style="display: inline-block; width: 8%;"></span>Person Contact No: <span
 			style="display: inline-block; width: 8%;"></span> <input type="text" size="50" name="perContact" />
-			<br /> <br /> <span style="display: inline-block; width: 8%;"></span>Contact Type: <span
+		<br /> <br /> <span style="display: inline-block; width: 12%;"></span>Contact Type: <span
 			style="display: inline-block; width: 8%;"></span> <input type="text" size="50" name="perType" />
 		<br /> <br /> <span style="display: inline-block; width: 14%;"></span> State: <span
-			style="display: inline-block; width: 9%;"></span> <select name="perState">
-			<option value="default">----Select State----</option>
-			<option value="Gujarat">Gujarat</option>
-			<option value="Rajsthan">Rajsthan</option>
-			<option value="Maharashtra">Maharashtra</option>
-			<option value="Madhyapradesh">Madhyapradesh</option>
-		</select> <br /> <br /> <span style="display: inline-block; width: 14%;"></span> City: <span
-			style="display: inline-block; width: 10%;"></span> <select name="perCity">
-			<option value="default">----Select City----</option>
-			<option value="Mumbai">Mumbai</option>
-			<option value="Pune">Pune</option>
-			<option value="Surat">Surat</option>
-			<option value="Rajkot">Rajkot</option>
-		</select> <br /> <br /> <span style="display: inline-block; width: 10%;"></span> Person Address: <span
+			style="display: inline-block; width: 9%;"></span> <input type="text" size="50" name="perState" />
+		<br /> <br /> <span style="display: inline-block; width: 14%;"></span> City: <span
+			style="display: inline-block; width: 10%;"></span> <input type="text" size="50" name="perCity" />
+		<br /> <br /> <span style="display: inline-block; width: 10%;"></span> Person Address: <span
 			style="display: inline-block; width: 7%;"></span>
 		<textarea name="perAddress" rows="5" cols="50"></textarea>
 

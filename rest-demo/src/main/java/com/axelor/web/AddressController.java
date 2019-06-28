@@ -14,10 +14,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
-import com.axelor.db.Address;
 import com.axelor.db.AddressBook;
 import com.axelor.db.Mobile;
 import com.axelor.service.AddressService;
+
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -38,7 +38,8 @@ public class AddressController {
       @FormParam("perAddress") String address,
       @FormParam("perState") String state,
       @FormParam("perCity") String city,
-      @FormParam("perContact") long contact, @FormParam("perType") String type) {
+      @FormParam("perContact") long contact,
+      @FormParam("perType") String type) {
     String result = as.insertData(state, name, contact, city, address, type);
     return Response.status(200).entity(result).build();
   }
@@ -48,10 +49,6 @@ public class AddressController {
   public void fetch(@Context HttpServletResponse response, @Context HttpServletRequest request)
       throws ServletException, IOException {
     List<AddressBook> a1 = as.fetchData();
-    List<Mobile> m1 = as.fetchMobile();
-    List<Address> aa1 = as.fetchAddress(); 
-    request.setAttribute("allmobile", m1);
-    request.setAttribute("alladdress", aa1);
     request.setAttribute("allrecord", a1);
     request.getRequestDispatcher("FetchRecord.jsp").forward(request, response);
   }
@@ -68,26 +65,87 @@ public class AddressController {
     request.getRequestDispatcher("/UpdateForm.jsp").forward(request, response);
   }
 
+  @GET
+  @Path("/addcon/{id}")
+  public void addCon(
+      @PathParam("id") String name,
+      @Context HttpServletResponse response,
+      @Context HttpServletRequest request)
+      throws ServletException, IOException {
+    AddressBook result = as.searchData(Integer.parseInt(name));
+    request.setAttribute("searchrecord", result);
+    request.getRequestDispatcher("/AddContact.jsp").forward(request, response);
+  }
+
+  @GET
+  @Path("/updatecon/{id}")
+  public void updateCon(
+      @PathParam("id") int id,
+      @Context HttpServletResponse response,
+      @Context HttpServletRequest request)
+      throws ServletException, IOException {
+    Mobile result = as.searchMobile(id);
+    request.setAttribute("searchrecord", result);
+    request.getRequestDispatcher("/UpdateContact.jsp").forward(request, response);
+  }
+
+  @GET
+  @Path("/add/{id}")
+  public void add(
+      @PathParam("id") String name,
+      @Context HttpServletResponse response,
+      @Context HttpServletRequest request)
+      throws ServletException, IOException {
+    AddressBook result = as.searchData(Integer.parseInt(name));
+    request.setAttribute("searchrecord", result);
+    request.getRequestDispatcher("/AddAddress.jsp").forward(request, response);
+  }
+
   @POST
-  @Path("/update")
+  @Path("search/update")
   public Response update(
       @FormParam("perId") int id,
       @FormParam("perName") String name,
-      @FormParam("perAddress") String address,
       @FormParam("perState") String state,
-      @FormParam("perCity") String city,
-      @FormParam("perContact") long contact) {
-    String result = as.updateData(id, state, name, contact, city, address);
+      @FormParam("perCity") String city) {
+    String result = as.updateData(id, state, name, city);
     return Response.status(200).entity(result).build();
   }
 
   @POST
-  @Path("/delete")
-  public Response delete(@FormParam("perName") String name) {
-    String result = as.deleteData(name);
+  @Path("/addcon/addcontact")
+  public Response addCon(
+      @FormParam("perId") int id,
+      @FormParam("addCon") long con,
+      @FormParam("addConType") String contype) {
+    String result = as.addContact(id, con, contype);
     return Response.status(200).entity(result).build();
   }
-  
+
+  @POST
+  @Path("/updatecon/contact")
+  public Response updateCon(
+      @FormParam("perId") int id,
+      @FormParam("addCon") long con,
+      @FormParam("addConType") String contype) {
+    String result = as.updateContact(id, con, contype);
+    return Response.status(200).entity(result).build();
+  }
+
+  @GET
+  @Path("/delete/{id}")
+  public Response delete(@PathParam("id") int id) {
+    String result = as.deleteData(id);
+    return Response.status(200).entity(result).build();
+  }
+
+  @GET
+  @Path("/del/{id}")
+  public Response deleteMobile(@PathParam("id") int id) {
+    String result = as.deleteMobile(id);
+    return Response.status(200).entity(result).build();
+  }
+
   @GET
   @Path("/param/{param}")
   public Response printMessage(@PathParam("param") String msg) {

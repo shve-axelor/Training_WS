@@ -1,4 +1,5 @@
 
+<%@page import="java.util.Iterator"%>
 <%@page import="com.axelor.db.Address"%>
 <%@page import="com.axelor.db.Mobile"%>
 <%@page import="com.axelor.db.AddressBook"%>
@@ -9,11 +10,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Student Records</title>
+<title>Person Records</title>
 
 <style>
 table {
-	width: 80%;
+	width: 100%;
 	padding: 20px;
 }
 
@@ -46,66 +47,50 @@ table#t01 th {
 	<h1 style="text-align: center;">All Person Records</h1>
 	<br />
 	<h3 style="text-align: center;">AddressBook Table</h3>
-		<table id="t01">
-			<tr>
-				<th>Person Id</th>
-				<th>Person Name</th>
-				<th>State</th>
-				<th>City</th>
-				<th>Add Contact</th>
-				<th>Add Address</th>
-			</tr>
-			<%
-			  List<AddressBook> posts = (List<AddressBook>) request.getAttribute("allrecord");
-			  for (AddressBook post : posts) {
-			%>
-			<tr>
-				<td><%=post.getPerId()%></td>
-				<td><%=post.getPerName()%></td>
-				<td><%=post.getPerState()%></td>
-				<td><%=post.getPerCity()%></td>
-				<td><a href="search/<%= post.getPerId()%>">Edit Record</a> </td>
-				<td>add address</td>
-			</tr>
-			<%}%>
-		</table>
-	<br />
-	<br />
-	<h3 style="text-align: center;">Contact Table</h3>
 	<table id="t01">
 		<tr>
+			<th>Person Id</th>
+			<th>Person Name</th>
+			<th>State</th>
+			<th>City</th>
+			<th>Add Contact</th>
+			<th>Add Address</th>
+			<th>Edit Record</th>
+			<th>Delete Record</th>
 			<th>Mobile Id</th>
 			<th>Contact No.</th>
 			<th>Contact Type</th>
+			<th>Update</th>
+			<th>Delete</th>
 		</tr>
 		<%
-		  List<Mobile> mo = (List<Mobile>) request.getAttribute("allmobile");
-		  for (Mobile post : mo) {
+		  List<AddressBook> posts = (List<AddressBook>) request.getAttribute("allrecord");
+		  Iterator<AddressBook> i2 = posts.iterator();
+		  while (i2.hasNext()) {
+		    AddressBook post = i2.next();
+		    List<Mobile> m1 = post.getMobile_numbers();
+		    Iterator<Mobile> i1 = m1.iterator();
 		%>
 		<tr>
-			<td><%=post.getmId()%></td>
-			<td><%=post.getContact()%></td>
-			<td><%=post.getType()%></td>
+			<td rowspan="<%=m1.size()%>"><%=post.getPerId()%></td>
+			<td rowspan="<%=m1.size()%>"><%=post.getPerName()%></td>
+			<td rowspan="<%=m1.size()%>"><%=post.getPerState()%></td>
+			<td rowspan="<%=m1.size()%>"><%=post.getPerCity()%></td>
+			<td rowspan="<%=m1.size()%>"><a href="addcon/<%=post.getPerId()%>">Add Contact</a></td>
+			<td rowspan="<%=m1.size()%>"><a href="add/<%=post.getPerId()%>">Add Address</a></td>
+			<td rowspan="<%=m1.size()%>"><a href="search/<%=post.getPerId()%>">Edit Record</a></td>
+			<td rowspan="<%=m1.size()%>"><a href="delete/<%=post.getPerId()%>">Delete Record</a></td>
+			<%
+			  while (i1.hasNext()) {
+			      Mobile m = i1.next();
+			%>
+			<td><%=m.getmId()%></td>
+			<td><%=m.getContact()%></td>
+			<td><%=m.getType()%></td>
+			<td><a href="updatecon/<%=m.getmId()%>">Update</a></td>
+			<td><a href="del/<%=m.getmId()%>">Delete</a></td>
 		</tr>
-		<%}%>
-	</table>
-
-	<br />
-	<br />
-	<h3 style="text-align: center;">Address Table</h3>
-	<table id="t01">
-		<tr>
-			<th>Address Id</th>
-			<th>Address</th>
-		</tr>
-		<%
-		  List<Address> add = (List<Address>) request.getAttribute("alladdress");
-		  for (Address post : add) {
-		%>
-		<tr>
-			<td><%=post.getaId()%></td>
-			<td><%=post.getAddress()%></td>
-		</tr>
+		<%} %>
 		<%}%>
 	</table>
 

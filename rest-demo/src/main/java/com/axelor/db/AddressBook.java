@@ -2,10 +2,13 @@ package com.axelor.db;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -14,10 +17,12 @@ public class AddressBook {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int perId;
 
-  @OneToMany(targetEntity = Mobile.class)
+  @OneToMany(fetch = FetchType.EAGER, targetEntity = Mobile.class, cascade = CascadeType.ALL)
+  @JoinColumn(name = "perId")
   private List<Mobile> mobile_numbers;
 
-  @OneToMany(targetEntity = Address.class)
+  @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
+  @JoinColumn(name = "perId")
   private List<Address> address;
 
   public List<Address> getAddress() {
