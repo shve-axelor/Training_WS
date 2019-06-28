@@ -11,7 +11,7 @@ public class FirstClient {
     JPAInitializer ps = inject.getInstance(JPAInitializer.class);
     Student st = inject.getInstance(Student.class);
 
-    StudentEntity se = st.getsName(28);
+    StudentEntity se = st.getsName(27);
 
     System.out.println(se.getsName());
   }

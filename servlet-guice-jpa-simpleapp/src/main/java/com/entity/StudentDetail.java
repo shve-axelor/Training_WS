@@ -13,8 +13,8 @@ public class StudentDetail {
   @SequenceGenerator(
       name = "student",
       sequenceName = "studentid",
-      initialValue = 1001,
-      allocationSize = 1000)
+      initialValue = 100,
+      allocationSize = 1)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student")
   private int sId;
 

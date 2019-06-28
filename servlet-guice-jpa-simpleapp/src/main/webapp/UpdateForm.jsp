@@ -22,12 +22,13 @@
 	<form name="registrationForm" method="post" action="StudentDatabaseServlet">
 		<span style="display: inline-block; width: 10%;"></span> Student Name: <span
 			style="display: inline-block; width: 8%;"></span> <input type="text" size="50" name="sName"
-			value="<%=post.getsName()%>" /> <input type="hidden" name="sId" value="<%=post.getsId()%>" />
-		<br /> <br /> <span style="display: inline-block; width: 10%;"></span> Student Email: <span
+			value="<%=post.getsName()%>" /> <input type="hidden" name="sId" value="<%=post.getsId()%>" /> <br />
+		<br /> <span style="display: inline-block; width: 10%;"></span> Student Email: <span
 			style="display: inline-block; width: 8%;"></span> <input type="text" size="50" name="Email"
-			value="<%=post.getsEmail()%>" /> <br /> <br /> <span style="display: inline-block; width: 10%;"></span>
-		Student Contact No: <span style="display: inline-block; width: 5%;"></span> <input type="text"
-			size="50" name="sContact" value="<%=post.getsContact()%>" /> <br /> <br /> <span
+			value="<%=post.getsEmail()%>" /> <br /> <br /> <span
+			style="display: inline-block; width: 10%;"></span> Student Contact No: <span
+			style="display: inline-block; width: 5%;"></span> <input type="text" size="50" name="sContact"
+			value="<%=post.getsContact()%>" /> <br /> <br /> <span
 			style="display: inline-block; width: 10%;"></span> Student Department: <span
 			style="display: inline-block; width: 5%;"></span> <select name="sDepartment">
 			<option value="default">----Select Department----</option>
@@ -39,8 +40,7 @@
 			style="display: inline-block; width: 7%;"></span>
 		<textarea name="Address" rows="5" cols="50"><%=post.getsAddress()%></textarea>
 
-		<br /> <br /> <br />
-		<br />
+		<br /> <br /> <br /> <br />
 		<%} %>
 		<span style="display: inline-block; width: 30%;"></span> <input type="submit" name="action"
 			value="Update" /> <span style="display: inline-block; width: 3%;"></span> <input type="reset"

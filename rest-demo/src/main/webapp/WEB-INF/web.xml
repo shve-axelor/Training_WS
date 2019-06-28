@@ -13,6 +13,7 @@
 		<listener-class>com.axelor.module.AddressListener</listener-class>
 	</listener>
 
+
 	<filter>
 		<filter-name>Resteasy</filter-name>
     <filter-class>
