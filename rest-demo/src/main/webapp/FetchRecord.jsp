@@ -1,4 +1,3 @@
-
 <%@page import="java.util.Iterator"%>
 <%@page import="com.axelor.db.Mobile"%>
 <%@page import="com.axelor.db.AddressBook"%>
@@ -10,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Person Records</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 table {
 	width: 100%;

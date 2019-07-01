@@ -13,7 +13,6 @@
 		<!-- JPA entities must be registered here -->
 		<class>com.axelor.db.AddressBook</class>
 		<class>com.axelor.db.Mobile</class>
-		<class>com.axelor.db.Address</class>
 		<!-- <class>com.guice.jpa.Student</class> -->
 
 		<properties>

@@ -124,7 +124,9 @@ public class AddressImp implements AddressService {
   public List<AddressBook> serData(String abc) {
     System.out.println(abc);
     Query query =
-        emp.get().createQuery("Select a from AddressBook a where lower(a.perName) like lower('" + abc + "%')");
+        emp.get()
+            .createQuery(
+                "Select a from AddressBook a where lower(a.perName) like lower('" + abc + "%')");
     List<AddressBook> a = query.getResultList();
     return a;
   }
