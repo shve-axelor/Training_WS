@@ -1,6 +1,5 @@
 
 <%@page import="java.util.Iterator"%>
-<%@page import="com.axelor.db.Address"%>
 <%@page import="com.axelor.db.Mobile"%>
 <%@page import="com.axelor.db.AddressBook"%>
 <%@page import="java.util.List"%>
@@ -44,7 +43,7 @@ table#t01 th {
 
 </head>
 <body>
-	<h1 style="text-align: center;"> Person Records</h1>
+	<h1 style="text-align: center;">Person Records</h1>
 	<br />
 	<h3 style="text-align: center;">AddressBook Table</h3>
 	<table id="t01">
@@ -53,6 +52,7 @@ table#t01 th {
 			<th>Person Name</th>
 			<th>State</th>
 			<th>City</th>
+			<th>Address</th>
 			<th>Add Contact</th>
 			<th>Edit Record</th>
 			<th>Delete Record</th>
@@ -79,8 +79,8 @@ table#t01 th {
 			<td rowspan="1"><%=post.getPerName()%></td>
 			<td rowspan="1"><%=post.getPerState()%></td>
 			<td rowspan="1"><%=post.getPerCity()%></td>
+			<td rowspan="1"><%=post.getPerAddress()%></td>
 			<td rowspan="1"><a href="addcon/<%=post.getPerId()%>">Add Contact</a></td>
-			<td rowspan="1"><a href="add/<%=post.getPerId()%>">Add Address</a></td>
 			<td rowspan="1"><a href="search/<%=post.getPerId()%>">Edit Record</a></td>
 			<td rowspan="1"><a href="delete/<%=post.getPerId()%>">Delete Record</a></td>
 			<td>empty</td>
@@ -96,6 +96,7 @@ table#t01 th {
 			<td rowspan="<%=m1.size()%>"><%=post.getPerName()%></td>
 			<td rowspan="<%=m1.size()%>"><%=post.getPerState()%></td>
 			<td rowspan="<%=m1.size()%>"><%=post.getPerCity()%></td>
+			<td rowspan="<%=m1.size()%>"><%=post.getPerAddress()%></td>
 			<td rowspan="<%=m1.size()%>"><a href="addcon/<%=post.getPerId()%>">Add Contact</a></td>
 			<td rowspan="<%=m1.size()%>"><a href="search/<%=post.getPerId()%>">Edit Record</a></td>
 			<td rowspan="<%=m1.size()%>"><a href="delete/<%=post.getPerId()%>">Delete Record</a></td>
@@ -115,9 +116,10 @@ table#t01 th {
 
 		<%}%>
 	</table>
-	<br><br>
-	<form action="index.jsp"><input type="submit" value="Click Here To Go To Main Page" /></form>
-	<br><br>
-	<form action="Search.jsp"><input type="submit" value="Click Here To Search Another Record" /></form>
+	<br>
+	<br>
+	<form action="index.jsp">
+		<input type="submit" value="Click Here To Go To Main Page" />
+	</form>
 </body>
 </html>

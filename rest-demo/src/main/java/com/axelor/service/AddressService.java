@@ -12,18 +12,18 @@ public interface AddressService {
   public List<AddressBook> fetchData();
 
   public AddressBook searchData(int id);
-  
+
   public Mobile searchMobile(int mid);
 
   public String deleteData(int id);
-  
+
   public String deleteMobile(int id);
 
   public String addContact(int id, long contact, String contacttype);
-  
+
   public String updateContact(int id, long contact, String contacttype);
 
-  public String updateData(int id, String state, String name, String city);
-  
+  public String updateData(int id, String state, String name, String city, String address);
+
   public List<AddressBook> serData(String abc);
 }

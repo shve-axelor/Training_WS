@@ -21,18 +21,7 @@ public class AddressBook {
   @JoinColumn(name = "perId")
   private List<Mobile> mobile_numbers;
 
-  @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
-  @JoinColumn(name = "perId")
-  private List<Address> address;
-
-  public List<Address> getAddress() {
-    return address;
-  }
-
-  public void setAddress(List<Address> address) {
-    this.address = address;
-  }
-
+  
   public List<Mobile> getMobile_numbers() {
     return mobile_numbers;
   }
@@ -44,6 +33,13 @@ public class AddressBook {
   private String perName;
   private String perState;
   private String perCity;
+  private String perAddress;
+
+  public String getPerAddress() {
+  return perAddress;}
+
+  public void setPerAddress(String perAddress) {
+  this.perAddress = perAddress;}
 
   public int getPerId() {
     return perId;

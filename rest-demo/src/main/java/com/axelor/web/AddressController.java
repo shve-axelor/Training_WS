@@ -43,7 +43,7 @@ public class AddressController {
     String result = as.insertData(state, name, contact, city, address, type);
     result =
         result
-            + "<br><br><form action='index.jsp'><input type='submit' value='Click Here To Go To Main Page' /></form> ";
+            + "<br><br><form action='/rest-demo/fetch'><input type='submit' value='Click Here' /></form> ";
     return Response.status(200).entity(result).build();
   }
 
@@ -122,8 +122,9 @@ public class AddressController {
       @FormParam("perId") int id,
       @FormParam("perName") String name,
       @FormParam("perState") String state,
-      @FormParam("perCity") String city) {
-    String result = as.updateData(id, state, name, city);
+      @FormParam("perCity") String city,
+      @FormParam("perAddress") String address) {
+    String result = as.updateData(id, state, name, city, address);
     result =
         result
             + "<br><br><form action='/rest-demo/fetch'><input type='submit' value='Click Here' /></form> ";
