@@ -55,7 +55,6 @@ public class AddressImp implements AddressService {
   @Transactional
   public List<AddressBook> fetchData() {
     Query query = emp.get().createQuery("Select a from AddressBook a");
-
     List<AddressBook> a = query.getResultList();
 
     return a;
@@ -84,9 +83,7 @@ public class AddressImp implements AddressService {
     AddressBook a1 = emp.get().find(AddressBook.class, id);
     a1.setPerState(state);
     a1.setPerName(name);
-    // a1.setPerContact(contact);
     a1.setPerCity(city);
-    //  a1.setPerAddress(address);
 
     return "The Data is Sucessfully Updated" + id;
   }
@@ -126,5 +123,13 @@ public class AddressImp implements AddressService {
     m1.setContact(contact);
     m1.setType(contacttype);
     return "Contact Detail Updated Sucessfully";
+  }
+
+  @Override
+  public List<AddressBook> serData(String abc) {
+    System.out.println(abc ); 
+    Query query = emp.get().createQuery("Select a from AddressBook a where a.perName like '"+ abc +"%'");
+    List<AddressBook> a = query.getResultList();
+    return a;
   }
 }

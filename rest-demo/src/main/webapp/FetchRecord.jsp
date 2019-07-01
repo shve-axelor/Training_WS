@@ -44,7 +44,7 @@ table#t01 th {
 
 </head>
 <body>
-	<h1 style="text-align: center;">All Person Records</h1>
+	<h1 style="text-align: center;"> Person Records</h1>
 	<br />
 	<h3 style="text-align: center;">AddressBook Table</h3>
 	<table id="t01">
@@ -54,7 +54,6 @@ table#t01 th {
 			<th>State</th>
 			<th>City</th>
 			<th>Add Contact</th>
-			<th>Add Address</th>
 			<th>Edit Record</th>
 			<th>Delete Record</th>
 			<th>Mobile Id</th>
@@ -71,18 +70,38 @@ table#t01 th {
 		    List<Mobile> m1 = post.getMobile_numbers();
 		    Iterator<Mobile> i1 = m1.iterator();
 		%>
+
+		<% 
+		    if (m1.size() == 0) {
+		%>
+		<tr>
+			<td rowspan="1"><%=post.getPerId()%></td>
+			<td rowspan="1"><%=post.getPerName()%></td>
+			<td rowspan="1"><%=post.getPerState()%></td>
+			<td rowspan="1"><%=post.getPerCity()%></td>
+			<td rowspan="1"><a href="addcon/<%=post.getPerId()%>">Add Contact</a></td>
+			<td rowspan="1"><a href="add/<%=post.getPerId()%>">Add Address</a></td>
+			<td rowspan="1"><a href="search/<%=post.getPerId()%>">Edit Record</a></td>
+			<td rowspan="1"><a href="delete/<%=post.getPerId()%>">Delete Record</a></td>
+			<td>empty</td>
+			<td>empty</td>
+			<td>empty</td>
+			<td>empty</td>
+			<td>empty</td>
+		</tr>
+		<%
+			  } else { %>
 		<tr>
 			<td rowspan="<%=m1.size()%>"><%=post.getPerId()%></td>
 			<td rowspan="<%=m1.size()%>"><%=post.getPerName()%></td>
 			<td rowspan="<%=m1.size()%>"><%=post.getPerState()%></td>
 			<td rowspan="<%=m1.size()%>"><%=post.getPerCity()%></td>
 			<td rowspan="<%=m1.size()%>"><a href="addcon/<%=post.getPerId()%>">Add Contact</a></td>
-			<td rowspan="<%=m1.size()%>"><a href="add/<%=post.getPerId()%>">Add Address</a></td>
 			<td rowspan="<%=m1.size()%>"><a href="search/<%=post.getPerId()%>">Edit Record</a></td>
 			<td rowspan="<%=m1.size()%>"><a href="delete/<%=post.getPerId()%>">Delete Record</a></td>
 			<%
 			  while (i1.hasNext()) {
-			      Mobile m = i1.next();
+			        Mobile m = i1.next();
 			%>
 			<td><%=m.getmId()%></td>
 			<td><%=m.getContact()%></td>
@@ -90,9 +109,15 @@ table#t01 th {
 			<td><a href="updatecon/<%=m.getmId()%>">Update</a></td>
 			<td><a href="del/<%=m.getmId()%>">Delete</a></td>
 		</tr>
+		<% } %>
+
 		<%} %>
+
 		<%}%>
 	</table>
-
+	<br><br>
+	<form action="index.jsp"><input type="submit" value="Click Here To Go To Main Page" /></form>
+	<br><br>
+	<form action="Search.jsp"><input type="submit" value="Click Here To Search Another Record" /></form>
 </body>
 </html>

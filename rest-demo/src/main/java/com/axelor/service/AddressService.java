@@ -24,4 +24,6 @@ public interface AddressService {
   public String updateContact(int id, long contact, String contacttype);
 
   public String updateData(int id, String state, String name, String city);
+  
+  public List<AddressBook> serData(String abc);
 }

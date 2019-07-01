@@ -15,8 +15,13 @@
 	</form>
 	<br>
 	<br>
-	<form style="text-align: center" method="post" action="fetch">
+	<form style="text-align: center" method="get" action="fetch">
 		<input type="submit" name="action" value="Click Here To See All Data" />
+	</form>
+	<br>
+	<br>
+	<form style="text-align: center" method="get" action="Search.jsp">
+		<input type="submit" name="action" value="Click Here To Search Reacord" />
 	</form>
 </body>
 </html>

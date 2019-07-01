@@ -41,14 +41,29 @@ public class AddressController {
       @FormParam("perContact") long contact,
       @FormParam("perType") String type) {
     String result = as.insertData(state, name, contact, city, address, type);
+    result =
+        result
+            + "<br><br><form action='index.jsp'><input type='submit' value='Click Here To Go To Main Page' /></form> ";
     return Response.status(200).entity(result).build();
   }
 
-  @POST
+  @GET
   @Path("/fetch")
   public void fetch(@Context HttpServletResponse response, @Context HttpServletRequest request)
       throws ServletException, IOException {
     List<AddressBook> a1 = as.fetchData();
+    request.setAttribute("allrecord", a1);
+    request.getRequestDispatcher("FetchRecord.jsp").forward(request, response);
+  }
+
+  @POST
+  @Path("/ser")
+  public void ser(
+      @FormParam("serName") String abcd,
+      @Context HttpServletResponse response,
+      @Context HttpServletRequest request)
+      throws ServletException, IOException {
+    List<AddressBook> a1 = as.serData(abcd);
     request.setAttribute("allrecord", a1);
     request.getRequestDispatcher("FetchRecord.jsp").forward(request, response);
   }
@@ -109,6 +124,9 @@ public class AddressController {
       @FormParam("perState") String state,
       @FormParam("perCity") String city) {
     String result = as.updateData(id, state, name, city);
+    result =
+        result
+            + "<br><br><form action='/rest-demo/fetch'><input type='submit' value='Click Here' /></form> ";
     return Response.status(200).entity(result).build();
   }
 
@@ -119,6 +137,9 @@ public class AddressController {
       @FormParam("addCon") long con,
       @FormParam("addConType") String contype) {
     String result = as.addContact(id, con, contype);
+    result =
+        result
+            + "<br><br><form action='/rest-demo/fetch'><input type='submit' value='Click Here' /></form> ";
     return Response.status(200).entity(result).build();
   }
 
@@ -129,6 +150,9 @@ public class AddressController {
       @FormParam("addCon") long con,
       @FormParam("addConType") String contype) {
     String result = as.updateContact(id, con, contype);
+    result =
+        result
+            + "<br><br><form action='/rest-demo/fetch'><input type='submit' value='Click Here' /></form> ";
     return Response.status(200).entity(result).build();
   }
 
@@ -136,6 +160,9 @@ public class AddressController {
   @Path("/delete/{id}")
   public Response delete(@PathParam("id") int id) {
     String result = as.deleteData(id);
+    result =
+        result
+            + "<br><br><form action='/rest-demo/fetch'><input type='submit' value='Click Here' /></form> ";
     return Response.status(200).entity(result).build();
   }
 
@@ -143,13 +170,9 @@ public class AddressController {
   @Path("/del/{id}")
   public Response deleteMobile(@PathParam("id") int id) {
     String result = as.deleteMobile(id);
-    return Response.status(200).entity(result).build();
-  }
-
-  @GET
-  @Path("/param/{param}")
-  public Response printMessage(@PathParam("param") String msg) {
-    String result = "Restful example : " + msg;
+    result =
+        result
+            + "<br><br><form action='/rest-demo/fetch'><input type='submit' value='Click Here' /></form> ";
     return Response.status(200).entity(result).build();
   }
 }
