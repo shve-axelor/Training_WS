@@ -3,6 +3,7 @@ package com.axelor.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
@@ -13,6 +14,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.persist.Transactional;
 
+@Singleton
 public class AddressImp implements AddressService {
 
   @Inject Provider<EntityManager> emp;

@@ -3,6 +3,7 @@ package com.axelor.web;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Singleton;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +20,7 @@ import com.axelor.db.Mobile;
 import com.axelor.service.AddressService;
 
 import com.google.inject.Inject;
-import com.google.inject.Singleton;
+
 
 @Singleton
 @Path("/")
@@ -52,6 +53,9 @@ public class AddressController {
   public void fetch(@Context HttpServletResponse response, @Context HttpServletRequest request)
       throws ServletException, IOException {
     List<AddressBook> a1 = as.fetchData();
+    response.setHeader("Pragma", "No-cache"); 
+    response.setHeader("Cache-Control", "no-cache"); 
+    response.setDateHeader("Expires", 1);
     request.setAttribute("allrecord", a1);
     request.getRequestDispatcher("FetchRecord.jsp").forward(request, response);
   }

@@ -10,6 +10,10 @@
 <meta charset="UTF-8">
 <title>Person Records</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta HTTP-EQUIV="Pragma" content="no-cache"> 
+<meta HTTP-EQUIV="Expires" content="-1">
+
+
 <style>
 table {
 	width: 100%;
